@@ -87,16 +87,29 @@ class _PlayGroundPreview extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Text(
-                              '${project.projectName}',
+                              "Machine Learning Script",
                               style: textTheme.caption,
                             ),
                             const SizedBox(height: 4),
+                            TextFormField(
+                              restorationId: 'life_story_field',
+                              focusNode: FocusNode(),
+                              decoration: InputDecoration(
+                                border: const OutlineInputBorder(),
+                                hintText: "Hint",
+                                helperText:
+                                "Help",
+                                labelText:
+                                "Code/Script",
+                              ),
+                              maxLines: 3,
+                            ),
                           ],
                         ),
                       ),
                     ],
                   ),
-                  Padding(
+                  /*Padding(
                     padding: const EdgeInsetsDirectional.only(
                       end: 20,
                     ),
@@ -106,7 +119,7 @@ class _PlayGroundPreview extends StatelessWidget {
                       maxLines: 1,
                       style: textTheme.bodyText2,
                     ),
-                  ),
+                  ),*/
                 ],
               ),
             ),

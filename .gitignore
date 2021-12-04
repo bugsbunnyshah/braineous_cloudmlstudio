@@ -48,3 +48,6 @@ remember.txt
 gitpush.sh
 .dart_tool/
 .flutter-plugins-dependencies
+.flutter-plugins
+.packages
+
