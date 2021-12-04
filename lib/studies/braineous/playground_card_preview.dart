@@ -12,8 +12,8 @@ import 'model/project_store.dart';
 const _assetsPackage = 'flutter_gallery_assets';
 const _iconAssetLocation = 'reply/icons';
 
-class ProjectPreviewCard extends StatelessWidget {
-  const ProjectPreviewCard({
+class PlayGroundPreviewCard extends StatelessWidget {
+  const PlayGroundPreviewCard({
     Key key,
     @required this.project,
   })  : assert(project != null),
@@ -46,17 +46,17 @@ class ProjectPreviewCard extends StatelessWidget {
       closedBuilder: (context, openContainer) {
         final isDesktop = isDisplayDesktop(context);
         final colorScheme = theme.colorScheme;
-        final projectPreview = _ProjectPreview(
+        final playGroundPreview = _PlayGroundPreview(
           project: project,
         );
-        return projectPreview;
+        return playGroundPreview;
       },
     );
   }
 }
 
-class _ProjectPreview extends StatelessWidget {
-  const _ProjectPreview({
+class _PlayGroundPreview extends StatelessWidget {
+  const _PlayGroundPreview({
     @required this.project,
   })  :assert(project != null);
 
@@ -87,7 +87,7 @@ class _ProjectPreview extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Text(
-                              '${project.projectId}',
+                              '${project.projectName}',
                               style: textTheme.caption,
                             ),
                             const SizedBox(height: 4),
@@ -101,7 +101,7 @@ class _ProjectPreview extends StatelessWidget {
                       end: 20,
                     ),
                     child: Text(
-                      project.projectName,
+                      project.projectId,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                       style: textTheme.bodyText2,

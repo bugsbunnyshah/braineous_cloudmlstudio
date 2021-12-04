@@ -69,7 +69,6 @@ class ProjectStore with ChangeNotifier {
       return [];
     }
 
-
     Map<String,dynamic> errorJson = UrlFunctions.handleError(null, response);
     if(errorJson != null)
     {

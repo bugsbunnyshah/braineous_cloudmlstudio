@@ -7,10 +7,10 @@ import 'package:provider/provider.dart';
 import 'project_card_preview.dart';
 import 'model/project_model.dart';
 
-class ProjectBody extends StatelessWidget {
+class PlayGroundBody extends StatelessWidget {
   Future<List<Project>> future;
 
-  ProjectBody(){
+  PlayGroundBody(){
     ProjectStore store = new ProjectStore();
     this.future = store.getProjects();
   }
@@ -70,7 +70,7 @@ class ProjectBody extends StatelessWidget {
                   const SizedBox(height: 4),
                   itemBuilder: (context, index) {
                     var project = projects[index];
-                    return ProjectPreviewCard(project:project);
+                    return PlayGroundPreviewCard(project:project);
                   },
                 ),
               ),

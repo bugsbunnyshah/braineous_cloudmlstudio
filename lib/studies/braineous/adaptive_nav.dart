@@ -7,6 +7,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_gen/gen_l10n/gallery_localizations.dart';
 import 'package:gallery/data/gallery_options.dart';
 import 'package:gallery/layout/adaptive.dart';
+import 'package:gallery/studies/braineous/playground_body.dart';
 import 'package:gallery/studies/reply/app.dart';
 import 'package:gallery/studies/reply/bottom_drawer.dart';
 import 'package:gallery/studies/reply/colors.dart';
@@ -121,6 +122,13 @@ class _AdaptiveNavState extends State<AdaptiveNav> {
     if (isDesktop) {
       while (desktopMailNavKey.currentState.canPop()) {
         desktopMailNavKey.currentState.pop();
+      }
+      if(index == 0) {
+        desktopMailNavKey.currentState.push(MaterialPageRoute(
+            builder: (BuildContext context) => ProjectBody()));
+      }else{
+        desktopMailNavKey.currentState.push(MaterialPageRoute(
+            builder: (BuildContext context) => PlayGroundBody()));
       }
     }
 
@@ -839,7 +847,8 @@ class _BottomAppBarActionItems extends StatelessWidget {
                   child: IconButton(
                     icon: const Icon(Icons.settings),
                     color: ReplyColors.white50,
-                    onPressed: () {},
+                    onPressed: () {
+                    },
                   ),
                 )
               : onMailView
@@ -857,6 +866,7 @@ class _BottomAppBarActionItems extends StatelessWidget {
                             color: starIconColor,
                           ),
                           onPressed: () {
+
                           },
                           color: ReplyColors.white50,
                         ),
@@ -868,12 +878,15 @@ class _BottomAppBarActionItems extends StatelessWidget {
                             ),
                           ),
                           onPressed: () {
+
                           },
                           color: ReplyColors.white50,
                         ),
                         IconButton(
                           icon: const Icon(Icons.more_vert),
-                          onPressed: () {},
+                          onPressed: () {
+
+                          },
                           color: ReplyColors.white50,
                         ),
                       ],
@@ -1048,6 +1061,7 @@ class _MailNavigatorState extends State<_MailNavigator> {
       onGenerateRoute: (settings) {
         switch (settings.name) {
           case inboxRoute:
+
             return MaterialPageRoute<void>(
               builder: (context) {
                 return _FadeThroughTransitionSwitcher(
@@ -1059,6 +1073,7 @@ class _MailNavigatorState extends State<_MailNavigator> {
             );
             break;
           case ReplyApp.composeRoute:
+
             return ReplyApp.createComposeRoute(settings);
             break;
         }
