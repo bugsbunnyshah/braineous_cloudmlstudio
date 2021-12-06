@@ -29,14 +29,9 @@ class PlayGroundPreviewCard extends StatelessWidget {
     // blocked because OpenContainer does not support restorablePush.
     // See https://github.com/flutter/flutter/issues/69924.
     return OpenContainer(
-      openBuilder: (context, closedContainer) {
-        //return MailViewPage(id: id, email: email);
-        //return MailboxDetails(key: key,);
-        FinancialEntityCategoryDetailsPage page = new FinancialEntityCategoryDetailsPage();
-        //TODO
-        page.project = project;
-        return page;
-      },
+      //openBuilder: (context, closedContainer) {
+      //  return PlayGroundPreviewCard();
+      //},
       openColor: theme.cardColor,
       closedShape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(0)),
@@ -44,28 +39,18 @@ class PlayGroundPreviewCard extends StatelessWidget {
       closedElevation: 0,
       closedColor: theme.cardColor,
       closedBuilder: (context, openContainer) {
-        final isDesktop = isDisplayDesktop(context);
-        final colorScheme = theme.colorScheme;
-        final playGroundPreview = _PlayGroundPreview(
-          project: project,
-        );
-        return playGroundPreview;
+        return PlayGroundScriptView();
       },
     );
+    //MaterialApp materialApp = new MaterialApp(home: new PlayGroundPreviewCard(),);
+    //return materialApp;
   }
 }
 
-class _PlayGroundPreview extends StatelessWidget {
-  const _PlayGroundPreview({
-    @required this.project,
-  })  :assert(project != null);
-
-  final Project project;
+class PlayGroundScriptView extends StatefulWidget{
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-
     return InkWell(
       child: LayoutBuilder(
         builder: (context, constraints) {
@@ -82,31 +67,8 @@ class _PlayGroundPreview extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              "Machine Learning Script",
-                              style: textTheme.caption,
-                            ),
-                            const SizedBox(height: 4),
-                            TextFormField(
-                              restorationId: 'life_story_field',
-                              focusNode: FocusNode(),
-                              decoration: InputDecoration(
-                                border: const OutlineInputBorder(),
-                                hintText: "Hint",
-                                helperText:
-                                "Help",
-                                labelText:
-                                "Code/Script",
-                              ),
-                              maxLines: 3,
-                            ),
-                          ],
-                        ),
-                      ),
+                        child: new PlayGroundScriptView(),
+                      )
                     ],
                   ),
                   /*Padding(
@@ -126,6 +88,53 @@ class _PlayGroundPreview extends StatelessWidget {
           );
         },
       ),
+    );
+  }
+
+  @override
+  State<StatefulWidget> createState() {
+    return _PlayGroundPreviewState();
+  }
+}
+
+class _PlayGroundPreviewState extends State<PlayGroundScriptView> with TickerProviderStateMixin{
+  String output = '';
+
+  void updateOutput(String scriptOutput){
+    setState(() {
+      output = scriptOutput;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        TextFormField(
+          restorationId: 'life_story_field',
+          focusNode: new FocusNode(),
+          decoration: InputDecoration(
+            border: const OutlineInputBorder(),
+            hintText: "Hint",
+            labelText:"Script/Code",
+          ),
+          maxLines: 3,
+        ),
+        const SizedBox(height: 4),
+        OutlinedButton(
+          onPressed: () {
+            updateOutput("BLAH3");
+          },
+          child: Text("Execute"),
+        ),
+        const SizedBox(height: 4),
+        Text('$output',
+          //style: Theme.of(context).textTheme.caption,
+        ),
+        const SizedBox(height: 4),
+      ],
     );
   }
 }
