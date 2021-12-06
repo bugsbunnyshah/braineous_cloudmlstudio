@@ -100,11 +100,27 @@ class PlayGroundScriptView extends StatefulWidget{
 
 class _PlayGroundPreviewState extends State<PlayGroundScriptView> with TickerProviderStateMixin{
   String output = '';
+  String exception = '';
+  String statusCode = '';
   TextEditingController scripController = TextEditingController();
+
+  @override
+  void dispose() {
+    scripController.dispose();
+    super.dispose();
+  }
 
   void updateOutput(Map<String,dynamic> json){
     setState(() {
-      output = json['message'] as String;
+      if(json['statusCode'] != null) {
+        statusCode = json['statusCode'].toString();
+      }
+      if(json['output'] != null) {
+        output = json['output'] as String;
+      }
+      if(json['exception'] != null) {
+        exception = json['exception'] as String;
+      }
     });
   }
 
@@ -131,13 +147,22 @@ class _PlayGroundPreviewState extends State<PlayGroundScriptView> with TickerPro
             String script = scripController.text;
             Future<Map<String,dynamic>> future = PlayGroundRestClient.executeScript(script);
             future.then((json){
+              print(json);
               updateOutput(json);
             });
           },
           child: Text("Execute"),
         ),
         const SizedBox(height: 4),
+        Text('$statusCode',
+          //style: Theme.of(context).textTheme.caption,
+        ),
+        const SizedBox(height: 4),
         Text('$output',
+          //style: Theme.of(context).textTheme.caption,
+        ),
+        const SizedBox(height: 4),
+        Text('$exception',
           //style: Theme.of(context).textTheme.caption,
         ),
         const SizedBox(height: 4),

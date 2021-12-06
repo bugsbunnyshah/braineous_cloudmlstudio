@@ -41,7 +41,7 @@ class UrlFunctions
       return json;
     }
 
-    if(response.statusCode == 401 || response.statusCode == 403)
+    if(response.statusCode == 401)
     {
       Map<String,dynamic> json = new Map();
       json["exception"] = "AUTH_FAILURE";

@@ -83,8 +83,6 @@ class PlayGroundRestClient
   }*/
 
   static Future<Map<String, dynamic>> executeScript(String script) async{
-    print(script);
-
     var response;
     Map<String, dynamic> json;
     Map<String,dynamic> payload = Map<String, dynamic>();
@@ -97,25 +95,23 @@ class PlayGroundRestClient
       },).
       timeout(Duration(seconds: 30),onTimeout: () {
         print("NETWORK_TIMEOUT");
-        //json = new Map();
-        //json["exception"] = "NETWORK_TIME_OUT";
-        //json["statusCode"] = 500;
         throw new CloudBusinessException(500, "NETWORK_TIME_OUT");
       });
     }
     catch (e) {
       print(e);
       json = UrlFunctions.handleError(e, response);
-      return Map<String, dynamic>();
+      return json;
     }
 
-    Map<String,dynamic> errorJson = UrlFunctions.handleError(null, response);
-    if(errorJson != null)
+    json = UrlFunctions.handleError(null, response);
+    if(json != null)
     {
-      return Map<String, dynamic>();
+      return json;
     }
 
     json  = jsonDecode(response.body) as Map<String, dynamic>;
+    json['statusCode'] = response.statusCode;
 
     return json;
   }
