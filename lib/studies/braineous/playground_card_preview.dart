@@ -1,6 +1,7 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:gallery/layout/adaptive.dart';
+import 'package:gallery/studies/braineous/model/playgroundRestClient.dart';
 import 'package:gallery/studies/braineous/model/project_model.dart';
 import 'package:gallery/studies/braineous/project_details.dart';
 //import 'package:gallery/studies/rally/finance.dart';
@@ -99,10 +100,11 @@ class PlayGroundScriptView extends StatefulWidget{
 
 class _PlayGroundPreviewState extends State<PlayGroundScriptView> with TickerProviderStateMixin{
   String output = '';
+  TextEditingController scripController = TextEditingController();
 
-  void updateOutput(String scriptOutput){
+  void updateOutput(Map<String,dynamic> json){
     setState(() {
-      output = scriptOutput;
+      output = json['message'] as String;
     });
   }
 
@@ -113,6 +115,7 @@ class _PlayGroundPreviewState extends State<PlayGroundScriptView> with TickerPro
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         TextFormField(
+          controller: scripController,
           restorationId: 'life_story_field',
           focusNode: new FocusNode(),
           decoration: InputDecoration(
@@ -125,7 +128,11 @@ class _PlayGroundPreviewState extends State<PlayGroundScriptView> with TickerPro
         const SizedBox(height: 4),
         OutlinedButton(
           onPressed: () {
-            updateOutput("BLAH3");
+            String script = scripController.text;
+            Future<Map<String,dynamic>> future = PlayGroundRestClient.executeScript(script);
+            future.then((json){
+              updateOutput(json);
+            });
           },
           child: Text("Execute"),
         ),
