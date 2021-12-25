@@ -34,7 +34,7 @@ class ProjectPreviewCard extends StatelessWidget {
         //return MailboxDetails(key: key,);
         FinancialEntityCategoryDetailsPage page = new FinancialEntityCategoryDetailsPage();
         //TODO
-        page.projectId = project.projectId;
+        page.project = project;
         return page;
       },
       openColor: theme.cardColor,

@@ -14,6 +14,8 @@ import 'package:gallery/studies/rally/colors.dart';
 import 'package:gallery/studies/rally/data.dart';
 import 'package:gallery/studies/rally/formatters.dart';
 
+import 'model/project_model.dart';
+
 class FinancialEntityView extends StatelessWidget {
   const FinancialEntityView({
     Key key,
@@ -320,8 +322,7 @@ class FinancialEntityCategoryDetailsPage extends StatelessWidget {
 
   final List<DetailedEventData> items =
   DummyDataService.getDetailedEventItems();
-
-  String projectId;
+  Project project;
 
   @override
   Widget build(BuildContext context) {
@@ -334,7 +335,7 @@ class FinancialEntityCategoryDetailsPage extends StatelessWidget {
           centerTitle: true,
           title: Text(
             //GalleryLocalizations.of(context).rallyAccountDataChecking,
-            projectId,
+            project.projectId,
             style: Theme.of(context).textTheme.bodyText2.copyWith(fontSize: 18),
           ),
         ),
@@ -356,6 +357,7 @@ class FinancialEntityCategoryDetailsPage extends StatelessWidget {
                         title: detailedEventData.title,
                         date: detailedEventData.date,
                         amount: detailedEventData.amount,
+                        project: this.project,
                       ),
                   ],
                 ),
@@ -373,11 +375,13 @@ class _DetailedEventCard extends StatelessWidget {
     @required this.title,
     @required this.date,
     @required this.amount,
+    @required this.project,
   });
 
   final String title;
   final DateTime date;
   final double amount;
+  final Project project;
 
   @override
   Widget build(BuildContext context) {
@@ -398,7 +402,7 @@ class _DetailedEventCard extends StatelessWidget {
               children: [
                 Expanded(
                   flex: 1,
-                  child: _EventTitle(title: title),
+                  child: _EventTitle(title: this.project.projectName),
                 ),
                 _EventDate(date: date),
                 Expanded(

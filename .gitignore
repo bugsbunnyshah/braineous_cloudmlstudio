@@ -46,3 +46,8 @@ src/main/resources/META-INF/resources/
 remember.txt
 /mlruns/
 gitpush.sh
+.dart_tool/
+.flutter-plugins-dependencies
+.flutter-plugins
+.packages
+
