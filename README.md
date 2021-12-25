@@ -20,12 +20,6 @@ To run the web application
 flutter clean && flutter run
 ```
 
-Application will be available at
-
-```
-http://localhost:3000/
-```
-
 ### Status
 
 Active Branch
