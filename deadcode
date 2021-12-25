@@ -446,4 +446,29 @@ class _OutlinedButtonDemo extends StatelessWidget {
 }
 
 
+Based on the information I could understand from https://www.thetrevorproject.org/blog/the-trevor-project-launches-new-ai-tool-to-support-crisis-counselor-training/
+
+From a purely technical standpoint creating the Counselor Training Simulator may require the following:
+
+* Previous past experiences based on news or presumably focused data, language processing
+from the past and the actual outcome. Positive or Negative
+
+* Plus, the way language was expressed actually would not have any influence on positive or negative,
+but patterns of language resulting in positive or negative can be inferred, providing insight into
+based on a conversation if the AI prediction leans positive or negative and proper action can be
+put in place.
+
+* The Counselor Training Simulator can play the conversations, the Counselor can in fact be told
+ahead of the Training what AI predicts as in positive or negative, but the input from the Counselor
+can have an impact on the choices the youth can probably make based on a tree of choices
+
+* Depending on the branch of the conversation, and sub branches as it progresses the counselor
+can reach a point and as the branches are traversed, the AI engine can calibrate and at that point
+predict positive or negative, but weight whether positive or negative, not exact.
+
+But Counselor can understand the branches and navigate to a positive outcome in real life or at least understand if negative,
+helping them to be more insightful as a result of the Counselor Training Simulator
+
+
+
 

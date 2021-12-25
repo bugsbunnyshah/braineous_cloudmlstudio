@@ -52,8 +52,8 @@ class ProjectStore with ChangeNotifier {
     String remoteUrl = "http://localhost/projects/";
     try {
       response = await http.get(Uri.parse(remoteUrl),headers: {
-        "Principal":"-2061008798",
-        "Bearer": "blah",
+        "Principal":"PAlDekAoo0XWjAicU9SQDKgy7B0y2p2t",
+        "Bearer": "getProjects",
       },).
       timeout(Duration(seconds: 30),onTimeout: () {
         print("NETWORK_TIMEOUT");
