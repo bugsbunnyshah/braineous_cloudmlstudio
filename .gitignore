@@ -50,4 +50,5 @@ gitpush.sh
 .flutter-plugins-dependencies
 .flutter-plugins
 .packages
+errorReport.txt
 

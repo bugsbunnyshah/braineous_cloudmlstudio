@@ -28,7 +28,7 @@ class ProjectStore with ChangeNotifier {
 
   bool get onMailView => _selectedEmailId > -1;
 
-  ProjectPages _selectedMailboxPage = ProjectPages.inbox;
+  ProjectPages _selectedMailboxPage = ProjectPages.projects;
   ProjectPages get selectedMailboxPage => _selectedMailboxPage;
   set selectedMailboxPage(ProjectPages mailboxPage) {
     _selectedMailboxPage = mailboxPage;
@@ -92,10 +92,6 @@ class ProjectStore with ChangeNotifier {
 
 // The different mailbox pages that the Reply app contains.
 enum ProjectPages {
-  inbox,
-  starred,
-  sent,
-  trash,
-  spam,
-  drafts,
+  projects,
+  notebook,
 }

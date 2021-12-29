@@ -3296,5 +3296,13 @@
   "replyDraftsLabel": "Drafts",
   "@replyDraftsLabel": {
     "description": "Text label for Drafts destination."
+  },
+  "projectsLabel": "Projects",
+  "@projectsLabel": {
+    "description": "Text label for Projects destination."
+  },
+  "noteBookLabel": "Notebook",
+  "@noteBookLabel": {
+    "description": "Text label for Notebook destination."
   }
 }

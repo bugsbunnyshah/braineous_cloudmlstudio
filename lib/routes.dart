@@ -5,6 +5,7 @@ import 'package:gallery/main.dart';
 import 'package:gallery/pages/demo.dart';
 import 'package:gallery/pages/home.dart';
 import 'package:gallery/studies/braineous/app.dart';
+import 'package:gallery/studies/braineous/index.dart';
 import 'package:gallery/studies/crane/app.dart' deferred as crane;
 import 'package:gallery/studies/crane/routes.dart' as crane_routes;
 import 'package:gallery/studies/fortnightly/app.dart' deferred as fortnightly;

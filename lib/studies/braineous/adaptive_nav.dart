@@ -51,34 +51,14 @@ class _AdaptiveNavState extends State<AdaptiveNav> {
     final localizations = GalleryLocalizations.of(context);
     final _navigationDestinations = <_Destination>[
       _Destination(
-        type: ProjectPages.inbox,
-        textLabel: localizations.replyInboxLabel,
+        type: ProjectPages.projects,
+        textLabel: localizations.projectsLabel,
         icon: '$_iconAssetLocation/twotone_inbox.png',
       ),
       _Destination(
-        type: ProjectPages.starred,
-        textLabel: localizations.replyStarredLabel,
+        type: ProjectPages.notebook,
+        textLabel: localizations.noteBookLabel,
         icon: '$_iconAssetLocation/twotone_star.png',
-      ),
-      _Destination(
-        type: ProjectPages.sent,
-        textLabel: localizations.replySentLabel,
-        icon: '$_iconAssetLocation/twotone_send.png',
-      ),
-      _Destination(
-        type: ProjectPages.trash,
-        textLabel: localizations.replyTrashLabel,
-        icon: '$_iconAssetLocation/twotone_delete.png',
-      ),
-      _Destination(
-        type: ProjectPages.spam,
-        textLabel: localizations.replySpamLabel,
-        icon: '$_iconAssetLocation/twotone_error.png',
-      ),
-      _Destination(
-        type: ProjectPages.drafts,
-        textLabel: localizations.replyDraftsLabel,
-        icon: '$_iconAssetLocation/twotone_drafts.png',
       ),
     ];
 
